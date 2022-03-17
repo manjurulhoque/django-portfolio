@@ -1,0 +1,91 @@
+{% include 'layouts/base.html' %}
+
+{% block content %}
+
+    <div class="content-pages">
+        <!-- Subpages -->
+        <div class="sub-home-pages">
+            <!-- Titlebar -->
+            <div id="titlebar">
+                <div class="container">
+                    <div class="special-block-bg">
+                        <h2>Portfolio</h2>
+                        <nav id="breadcrumbs">
+                            <ul>
+                                <li><a href="{% url 'core:home' %}"><i class="pe-7s-home"></i> Home</a></li>
+                                <li><a href="#">Portfolio</a></li>
+                                <li>{{ project.title }}</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <header class="portfolio-head">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                    <div class="portfolio-head-content">
+                        <p class="meta">{{ project.project_category.title }}</p>
+                        <h1>{{ project.title }}</h1>
+                        <div class="portfolio-desc hidden-xs">
+                            <p><b>Published:</b> {{ project.from_date }}</p>
+                            <p><b>Demo:</b> <a class="demo-pro" href="{{ project.link }}"></a>{{ project.link }}</p>
+                            <div class="portfolio-attr">
+                                <a href="#" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="section">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="block-centered pt-50">
+                                {{ project.description|safe }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {#                <div class="related-projects pb-50 pt-50">#}
+                {#                    <h4>Related Projects</h4>#}
+                {#                    <div class="clearfix portfolio-grid pt-30">#}
+                {#                        {% for %}#}
+                {#                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 portfolio-item pro_cat_<?php echo $pro->project_category_id ?> all">#}
+                {#                            <div class="portfolio-img">#}
+                {#                                <img src="#" class="img-responsive" alt="<?php echo $pro->title ?>">#}
+                {#                            </div>#}
+                {#                            <div class="portfolio-data">#}
+                {#                                <h4><a href="#"><?php echo $pro->title ?></a></h4>#}
+                {#                                <p class="meta"><?php echo $pro->category ?></p>#}
+                {#                                <div class="portfolio-attr">#}
+                {#                                    <a href="#"><i class="lnr lnr-link"></i></a>#}
+                {#                                    <a href="#" data-rel="lightcase:gal" title="<?php echo $pro->title ?>"><i class="lnr lnr-move"></i></a>#}
+                {#                                </div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                        {% endfor %}#}
+                {#                    </div>#}
+                {#                </div>#}
+                {#                <?php if (config('portfolio_comments') == 1): ?>#}
+                {#                <div id="add-review" class="add-review-box">#}
+                {#                    <!-- Add Review -->#}
+                {#                    <h3 class="listing-desc-headline margin-bottom-35"><?php echo lang('global_Add_comment') ?></h3>#}
+                {#                    <div id="disqus_thread"></div>#}
+                {#                    <script>#}
+                {#                        (function () {#}
+                {#                            var d = document, s = d.createElement('script');#}
+                {#                            s.src = 'https://marwa-el-manawy.disqus.com/embed.js';#}
+                {#                            s.setAttribute('data-timestamp', +new Date());#}
+                {#                            (d.head || d.body).appendChild(s);#}
+                {#                        })();#}
+                {#                    </script>#}
+                {#                </div>#}
+                {#                <?php endif ?>#}
+                <div class="pb-50"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

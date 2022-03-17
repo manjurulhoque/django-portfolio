@@ -1,0 +1,446 @@
+{% include 'layouts/base.html' %}
+{% load static %}
+{% load chunks %}
+{% load image_exists %}
+
+{% block content %}
+
+    <div class="content-pages">
+        <div class="sub-home-pages">
+            <section id="home" class="sub-page start-page">
+                <div class="sub-page-inner"
+                     style="background: url({% static 'images/home-bg.jpeg' %});">
+                    <div class="mask"></div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="title-block">
+                                <h2>Hello I'am Manjurul Hoque Rumi</h2>
+                                <div class="type-wrap">
+                                    <div class="cd-headline clip">
+                                        <span class="blc">I am working as</span>
+                                        <span class="cd-words-wrapper">
+                                            <b>Software Engineer</b>
+                                            <b>Python Developer</b>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="home-buttons">
+                                    <a href="#contact" class="bt-submit">
+                                        <i class="lnr lnr-envelope"></i> Contact Me
+                                    </a>
+                                    <a href="#contact" class="bt-submit">
+                                        <i class="lnr lnr-briefcase"></i> Hire Me
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about-me" class="sub-page">
+                <div class="sub-page-inner">
+                    <div class="section-title">
+                        <div class="main-title">
+                            <div class="title-main-page">
+                                <h4>About Me</h4>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <!-- about me -->
+                        <div class="row pb-30">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <h3>{{ about.name }}</h3>
+                                <span class="about-location">
+                                    <i class="lnr lnr-map-marker"></i>{{ about.address }}
+                                </span>
+                                <p class="about-content">
+                                    {{ about.about_me }}
+                                </p>
+                                <ul class="bout-list-summry row">
+                                    <li class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="icon-info">
+                                            <i class="lnr lnr-briefcase"></i>
+                                        </div>
+                                        <div class="details-info">
+                                            <h6>{{ about.num_experience }}+ Years Job</h6>
+                                            <p>Experience</p>
+                                        </div>
+                                    </li>
+                                    <li class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="icon-info">
+                                            <i class="lnr lnr-layers"></i>
+                                        </div>
+                                        <div class="details-info">
+                                            <h6>{{ about.num_projects }}+ Projects</h6>
+                                            <p>Completed</p>
+                                        </div>
+                                    </li>
+                                    <li class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="icon-info">
+                                            <i class="lnr lnr-coffee-cup"></i>
+                                        </div>
+                                        <div class="details-info">
+                                            <h6>{{ about.num_meetings }}+ Meetings</h6>
+                                            <p>Successful</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-12 col-md-6 col-lg-6">
+                                <div class="box-img">
+                                    <img src="#" class="img-fluid" alt="image">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /about me -->
+
+                        <!-- services -->
+                        <div class="special-block-bg">
+                            <div class="section-head">
+                                <h4>
+                                    <span>What actually I do</span>
+                                    My Services
+                                </h4>
+                            </div>
+                            <div class="row">
+                                {% for chunk in services|chunks:2 %}
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                        <div class="services-list">
+                                            {% for service in chunk %}
+                                                <div class="service-block">
+                                                    <div class="service-icon">
+                                                        {% image_exists service.image.url as image %}
+                                                        <i><img src="{{ image }}"/></i>
+                                                    </div>
+                                                    <div class="service-text">
+                                                        <h4>{{ service.title }}</h4>
+                                                        <p>{{ service.description }}</p>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="resume" class="sub-page">
+                <div class="sub-page-inner">
+                    <div class="section-title">
+                        <div class="main-title">
+                            <div class="title-main-page">
+                                <h4>Resume</h4>
+                                <p>My Professional Resume</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                                <!-- Work History -->
+                                <div class="pb-300">
+                                    <div class="section-head col-sm-12">
+                                        <h4>
+                                            <span>My Professional</span>
+                                            Work History
+                                        </h4>
+                                        <a class="bt-submit" href="#">
+                                            <i class="fas fa-cloud-download-alt"></i> Download Resume
+                                        </a>
+                                    </div>
+                                    <div class="main-timeline">
+                                        {% for experience in experiences %}
+                                            <div class="timeline {% if experience.current %} current {% endif %}">
+                                                <div class="timeline-icon">
+                                                    <img src="{% static 'images/google.png' %}"
+                                                         alt="Google">
+                                                </div>
+                                                <div class="timeline-content">
+                                                <span class="date">
+                                                    {{ experience.from_date }}
+                                                    -
+                                                    {% if experience.current %} Current {% else %} {{ experience.to_date }} {% endif %} </span>
+                                                    <h5 class="title">{{ experience.position }}</h5>
+                                                    <p class="description">{{ experience.description }}</p>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- /Work History -->
+
+                                <!-- Skills -->
+                                <div class="pb-30 pt-30">
+                                    <div class="row list-skills">
+                                        <!-- Work Skills -->
+                                        <div class="col-md-6">
+                                            <div class="special-block-bg">
+                                                <div class="section-head">
+                                                    <h4>
+                                                        <span> My Professional</span>
+                                                        Work Skills
+                                                    </h4>
+                                                </div>
+                                                <div class="skills-items skills-progressbar">
+                                                    {% for skill in skills %}
+                                                        <div class="skill-item">
+                                                            <h4>{{ skill.title }}</h4>
+                                                            <div class="progress">
+                                                                <div class="progress-bar wow fadeInLeft"
+                                                                     data-progress="{{ skill.rate }}%"
+                                                                     style="width: {{ skill.rate }}%;"
+                                                                     data-wow-duration="1s" data-wow-delay="1s"></div>
+                                                            </div>
+                                                            <span>{{ skill.rate }}%</span>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Work Skills -->
+                                    </div>
+                                </div>
+                                <!-- /Skills -->
+
+                                <!-- Education History -->
+                                <div class="pt-30">
+                                    <div class="section-head">
+                                        <h4>
+                                            <span>My Education</span>
+                                            Background History
+                                        </h4>
+                                    </div>
+                                    <div class="main-timeline">
+                                        {% for education in educations %}
+                                            <div class="timeline {% if experience.current %} current {% endif %}">
+                                                <div class="timeline-icon">
+                                                    <img src="#"
+                                                         alt="college">
+                                                </div>
+                                                <div class="timeline-content">
+                                                <span class="date">
+                                                    {{ education.from_date }}
+                                                    -
+                                                    {% if education.current %} Current {% else %} {{ education.to_date }} {% endif %} </span>
+                                                    <h5 class="title">{{ education.school }}</h5>
+                                                    <p class="description">{{ education.description }}</p>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- /Education History -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="portfolio" class="sub-page">
+                <div class="sub-page-inner">
+                    <div class="section-title">
+                        <div class="main-title">
+                            <div class="title-main-page">
+                                <h4>Portfolio</h4>
+                                <p>Some of my work samples</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="filter-tabs">
+                            <button class="fil-cat" data-rel="all"><span>0</span> All
+                            </button>
+                            {% for category in categories %}
+                                <button class="fil-cat" data-rel="pro_cat_{{ category.id }}">
+                                    <span>({{ category.project_set.count }})</span> {{ category.title }}
+                                </button>
+                            {% endfor %}
+                        </div>
+
+                        <div class="portfolio-grid portfolio-trigger" id="portfolio-page">
+                            <div class="label-portfolio">
+                                <span class="rotated-sub">Project</span>
+                                <span class="project-count">{{ projects.count }}</span>
+                            </div>
+                            <div class="row">
+                                {% for project in projects %}
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 portfolio-item pro_cat_{{ project.project_category_id }} all">
+                                        <div class="portfolio-img">
+                                            <img src="{{ project.image.url }}" class="img-responsive" alt="title">
+                                        </div>
+                                        <div class="portfolio-data">
+                                            <h4>
+                                                <a href="{% url 'core:project-details' project.slug %}">
+                                                    {{ project.title }}
+                                                </a>
+                                            </h4>
+                                            <p class="meta">{{ project.project_category.title }}</p>
+                                            <div class="portfolio-attr">
+                                                <a href="{% url 'core:project-details' project.slug %}">
+                                                    <i class="lnr lnr-link"></i>
+                                                </a>
+                                                <a href="#" data-rel="lightcase:gal" title="title">
+                                                    <i class="lnr lnr-move"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="blog" class="sub-page">
+                <div class="sub-page-inner">
+                    <div class="section-title">
+                        <div class="main-title">
+                            <div class="title-main-page">
+                                <h4>Blog</h4>
+                                <p>News and Blog</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="row blog-grid-flex">
+                            {% for blog in blogs %}
+                                <div class="col-md-4 col-sm-6 blog-item">
+                                    <div class="blog-article">
+                                        <div class="comment-like">
+
+                                        </div>
+                                        <div class="article-img">
+                                            <a href="#">
+                                                {% if not blog.image %}
+                                                    <img src="{% static 'images/blog_default.jpg' %}" class="img-responsive" alt="title">
+                                                {% endif %}
+                                            </a>
+                                        </div>
+                                        <div class="article-link">
+                                            <a href="#">
+                                                <i class="lnr lnr-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                        <div class="article-content">
+                                            <h4>
+                                                <a href="#">
+                                                    {{ blog.title }}
+                                                </a>
+                                            </h4>
+                                            <div class="meta">
+                                                <span>
+                                                    <i>{{ blog.created_at }}</i>
+                                                    </span> <span>
+                                                    <i>In</i>
+                                                    <a href="#">{{ blog.category }}</a>
+                                                </span>
+                                            </div>
+                                            <p>
+                                                {{ blog.description|truncatechars:100 }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="col-md-12 text-center">
+                                <a href="{% url 'core:blog' %}" class="btn bt-submit">Show all blog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="contact" class="sub-page">
+                <div class="sub-page-inner">
+                    <div class="section-title">
+                        <div class="main-title">
+                            <div class="title-main-page">
+                                <h4>Contact</h4>
+                                <p>Need Some Help?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact Form -->
+                    <div class="row contact-form pb-30">
+                        <div class="col-sm-12 col-md-5 col-lg-5 left-background">
+                            <img src="{% static 'images/mailbox.png' %}" alt="bg"/>
+                        </div>
+                        <div class="col-sm-12 col-md-7 col-lg-7">
+                            <div class="form-contact-me">
+                                <div id="show_contact_msg" class="row">
+
+                                </div>
+                                <form method="post" id="contact-form" action="#contact">
+                                    <input name="name" type="text" placeholder="Name:" required autocomplete="off">
+                                    <input name="email" type="email" placeholder="Email:" required autocomplete="off">
+                                    <textarea name="message" placeholder="Message:" required rows="6"></textarea>
+                                    <input class="bt-submit" type="submit" value="Send">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Contact Form -->
+
+                    <!-- Contact Details -->
+                    <div class="pt-50 pb-30">
+                        <!-- Social Media -->
+                        <div class="pt-50">
+                            <div class="social-media-block">
+                                <h4>Follow Me: </h4>
+                                <ul class="social-media-links">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-reddit"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-stack-overflow"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /Social Media -->
+                    </div>
+                    <!-- /Contact Details -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>Manjurul Hoque | Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/lightcase.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/colors/teal.css' %}" type="text/css">
+</head>
+<body>
+<div id="preloader">
+    <div id="preloader-circle">
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<div class="wrapper-page">
+    <header class="header">
+        <div class="header-content">
+            <div class="profile-picture-block">
+                <div class="my-photo">
+                    <img src="{% static 'images/avatar.jpg' %}" class="img-fluid" alt="avatar">
+                </div>
+            </div>
+            <div class="site-title-block">
+                <div class="site-title">Portfolio</div>
+                <div class="type-wrap">
+                    <div class="cd-headline clip">
+                        <span class="cd-words-wrapper">
+                            <b>Software Engineer</b>
+                            <b>Python Developer</b>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-nav">
+                <ul class="header-main-menu" id="header-main-menu">
+                    <li>
+                        <a class="active" href="#home">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about-me">
+                            <i class="fas fa-user-tie"></i> About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#resume">
+                            <i class="fas fa-award"></i> Resume
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#portfolio">
+                            <i class="fas fa-business-time"></i> Portfolio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#blog">
+                            <i class="fas fa-book-reader"></i> Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact">
+                            <i class="fas fa-paper-plane"></i> Contact Me
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="responsive-header">
+        <div class="responsive-header-name">
+            <img class="responsive-logo" src="#" alt="#"/>
+            Manjurul Hoque
+        </div>
+        <span class="responsive-icon"><i class="lnr lnr-menu"></i></span>
+    </div>
+    {% block content %}{% endblock %}
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/typed.min.js' %}"></script>
+<script src="{% static 'js/lightcase.min.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

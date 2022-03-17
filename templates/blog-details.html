@@ -1,0 +1,70 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <div class="content-pages">
+        <div class="sub-home-pages">
+            <div id="titlebar">
+                <div class="container">
+                    <div class="special-block-bg">
+                        <h2>Blog</h2>
+                        <nav id="breadcrumbs">
+                            <ul>
+                                <li><a href="#"><i class="pe-7s-home"></i> Home</a></li>
+                                <li><a href="{% url 'core:blog' %}">Blog</a></li>
+                                <li><a href="#">{{ blog.category.name }}</a></li>
+                                <li>{{ blog.title }}</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="blog-page">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-12">
+                            <div class="blog-post single-post">
+                                <img class="post-img img-fluid" src="{{ blog.photo }}" alt="{{ blog.title }}">
+                                <div class="post-content">
+                                    <h3>{{ blog.title }}</h3>
+                                    <ul class="post-meta">
+                                        <li><a href="#"><i class="lnr lnr-user"></i> Manjurul Hoque</a></li>
+                                        <li><i class="lnr lnr-history"></i> {{ blog.created_at }}</li>
+                                        <li><a href="#"><i class="lnr lnr-book"></i> {{ blog.category.name }}</a></li>
+                                    </ul>
+                                    <div class="post-description">
+                                        {{ blog.description }}
+                                    </div>
+                                    <ul class="share-buttons pt-30">
+                                        <li><a class="fb-share" href="#" target="_blank"><i class="fab fa-facebook-f"></i> Share</a></li>
+                                        <li><a class="twitter-share" href="#" target="_blank"><i class="fab fa-twitter"></i> Tweet</a></li>
+                                        <li><a class="gplus-share" href="#" target="_blank"><i class="fab fa-google-plus-g"></i> Share</a></li>
+                                        <li><a class="pinterest-share" href="#" target="_blank">
+                                            <i class="fab fa-pinterest-p"></i> Pin</a>
+                                        </li>
+                                    </ul>
+                                    <div id="add-review" class="add-review-box">
+                                        <h3 class="listing-desc-headline margin-bottom-35">Add Comment</h3>
+                                        <div id="disqus_thread"></div>
+                                        <script>
+                                            (function () {
+                                                let d = document, s = d.createElement('script');
+                                                s.src = 'https://manjurul-hoque.disqus.com/embed.js';
+                                                s.setAttribute('data-timestamp', +new Date());
+                                                (d.head || d.body).appendChild(s);
+                                            })();
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="margin-top-50"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
