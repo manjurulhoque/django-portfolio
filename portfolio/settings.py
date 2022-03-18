@@ -131,13 +131,15 @@ STATICFILES_DIRS = [
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'
+TINYMCE_COMPRESSOR = False
+
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
     'width': 1120,
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',
-    'theme': 'advanced',
     'plugins': "table,spellchecker,paste,searchreplace,wordcount,contextmenu",
     "font_size_style_values": "12px,13px,14px,16px,18px,20px",
     'toolbar1': '''

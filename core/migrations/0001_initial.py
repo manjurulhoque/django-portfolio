@@ -84,7 +84,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=255)),
                 ('slug', models.CharField(max_length=255, null=True, unique=True)),
-                ('image', models.ImageField(default='default.png', upload_to=core.models.song_directory_path)),
+                ('image', models.ImageField(default='default.png', upload_to=core.models.project_directory_path)),
                 ('link', models.CharField(max_length=255, null=True)),
                 ('from_date', models.DateField()),
                 ('to_date', models.DateField()),

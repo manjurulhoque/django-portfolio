@@ -8,6 +8,7 @@ from PIL import Image
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db import models
 from django.db.models.signals import post_delete
+from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.utils.timezone import now
 from django.templatetags.static import static
@@ -94,7 +95,8 @@ class Project(models.Model):
         output.seek(0)
 
         # change the image field value to be the newly modified image value
-        self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+        self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
+                                          sys.getsizeof(output), None)
 
         super(Project, self).save()
 
@@ -141,7 +143,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=255)
     slug = models.CharField(max_length=255, unique=True)
     category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE)
-    description = models.TextField()
+    description = HTMLField()
     image = models.ImageField(upload_to=blog_directory_path, null=True, blank=True)
     created_at = models.DateField(default=now)
 
@@ -159,3 +161,6 @@ class Blog(models.Model):
             return self.image.url
         else:
             return static("images/blog_default.jpg")
+
+    def get_absolute_url(self):
+        return reverse_lazy('core:blog-details', self.slug)
