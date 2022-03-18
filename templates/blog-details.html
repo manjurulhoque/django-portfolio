@@ -34,7 +34,7 @@
                                         <li><a href="#"><i class="lnr lnr-book"></i> {{ blog.category.name }}</a></li>
                                     </ul>
                                     <div class="post-description">
-                                        {{ blog.description }}
+                                        {{ blog.description | safe }}
                                     </div>
                                     <ul class="share-buttons pt-30">
                                         <li><a class="fb-share" href="#" target="_blank"><i class="fab fa-facebook-f"></i> Share</a></li>
