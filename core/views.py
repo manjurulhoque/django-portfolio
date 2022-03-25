@@ -34,7 +34,7 @@ class BlogListView(ListView):
     template_name = "blogs.html"
     paginate_by = 10
     context_object_name = "blogs"
-    queryset = Blog.objects.select_related('category')
+    queryset = Blog.objects.select_related('category').order_by('id')
 
 
 class BlogDetailView(DetailView):

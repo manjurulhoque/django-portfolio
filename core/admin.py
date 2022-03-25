@@ -16,4 +16,4 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    readonly_fields = ["slug"]
+    prepopulated_fields = {"slug": ("title",)}
